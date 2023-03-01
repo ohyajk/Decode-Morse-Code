@@ -31,7 +31,7 @@ We decoded morse code in this project.
 > This project use Ruby language.
 
 ### Key Features <a name="key-features"></a>
-- **ADD queries for sql**
+- **Decodes Morse Code**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

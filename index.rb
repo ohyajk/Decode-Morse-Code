@@ -1,4 +1,4 @@
-MORSE_CODE = {
+@morse_code = {
   '.-' => 'A',
   '-...' => 'B',
   '-.-.' => 'C',
@@ -25,7 +25,7 @@ MORSE_CODE = {
   '-..-' => 'X',
   '-.--' => 'Y',
   '--..' => 'Z'
-}.freeze
+}
 
 def decode_morse(code)
   @words = code.split('   ')
@@ -39,3 +39,5 @@ def decode_morse(code)
     print @letters.to_s
   end
 end
+
+decode_morse('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')

@@ -27,17 +27,42 @@
   '--..' => 'Z'
 }
 
-def decode_morse(code)
-  @words = code.split('   ')
-  @words.each do |word|
-    @chars = word.split
-    @letters = ' '
-    @chars.each do |c|
-      @decode = @morse_code[c]
-      @letters += @decode
-    end
-    print @letters.to_s
+def decode_char(character)
+  @morse_code[character].capitalize
+end
+
+def split_sentence(sentence)
+  if sentence.is_a? String
+    sentence.split('   ')
+  else
+    puts 'Your input should be a string in double or single quote!'
   end
 end
 
-decode_morse('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
+def decode_word(word)
+  if word.is_a? String
+    word_decode = ''
+    word.split.each do |morse|
+      dc = decode_char(morse)
+      word_decode += dc.to_s
+    end
+  end
+  word_decode
+end
+
+def decode(sentence)
+  words = split_sentence(sentence)
+  sentence_decode = ''
+  words.each do |word|
+    word_decode = decode_word(word)
+    sentence_decode += "#{word_decode} "
+  end
+  sentence_decode.strip
+end
+
+# Tests
+p decode_char('-...') #=> B
+p decode_word('-- -.--') # => MY
+p decode('-- -.--   -. .- -- .') # => MY NAME
+sentence = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
+p decode(sentence) # => A BOX FULL OF RUBIES
